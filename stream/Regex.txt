@@ -1,0 +1,27 @@
+ \W (Upper case)-> verilen metnin içinde harf olmayacak
+ \w (Lower case)-> verilen metnin içinde harf olacak
+ ^ (Patternin başında olduğunda) -> devamındaki patternle başlama şartı koyar.
+ [abc] -> içerisinde abc grubunun olup olmadığına bakar.
+ [^abc] (Köşeli parantez içinde) -> verilen grubun olmaması şartını sağlar.
+ [0-5] -> içerisinde 0'dan 5'e kadar olan karakter var mı?
+ | -> veya işlemi yapar
+ . -> .a
+        ^ -> ^Merhaba
+        $ -> Kodluyoruz!$
+        \d -> sayı hanesi
+        \s -> whitespace characters(tab, space, newline etc...)
+        \b -> kelimenin başında veya sonundaki karakter dizisi kontrolü
+        \w -> word character/kelime karakteri [a-zA-Z_0-9]
+        \W -> kelime karakteri olmayan [^w]
+
+ Pattern desen = Pattern.compile("^\\W", Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);
+    Pattern -> Regex kullanabilmek için kullandığımız java sınıfı.
+    .compile(pattern, **optional) -> girdiğimiz pattern in derlenmesi ve optional seçeneklere göre düzenlenmesini sağlayan metot.
+        Pattern.UNICODE_CASE -> Girdiğimiz patternin unicode standartlarına göre işlemlerini yapar.
+        Pattern.CASE_INSENSITIVE -> Büyük/küçük harf duyarlılığını yoksayar.
+
+ Matcher eslesme = desen.matcher("###");
+    Matcher -> Pattern sınıfından gelen bir modelle karakter eşleme işlemleri yapan java sınıfı.
+    desen.matcher(text) -> Parametrede verilen metin ile verilen pattern eşlemesinin uyumlu olup olmadığına bakar.
+    eslesme.find(); -> Eğer eşleşme bulunduysa true, bulunamadıysa false döner.
+
